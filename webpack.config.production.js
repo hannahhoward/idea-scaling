@@ -42,6 +42,15 @@ module.exports = {
     }, {
       test: /\.svg$/,
       loader: "url-loader?limit=10000&mimetype=image/svg+xml"
+    }, {
+      test: /\.wav$/,
+      loader: "url-loader?mimetype=audio/wav",
+      include: path.join(__dirname, "assets")
+    },
+    {
+      test: /\.mp3$/,
+      loader: "url-loader?mimetype=audio/mpeg",
+      include: path.join(__dirname, "assets")
     }]
   }
 };

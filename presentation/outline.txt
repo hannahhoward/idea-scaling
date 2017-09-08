@@ -1,0 +1,22 @@
+opening story
+Erlang is AMAZING
+Selling
+Ideas
+Community Organizing: Bringing ideas into the world!
+   Left Wing ideas
+   Erlang Ideas
+Self-interest
+   What was the self interest of the last generation of programmers?
+   What is the self interest of the modern programmer?
+How we organize
+   Win concrete immediate improvements
+   Give people a sense of their own power
+   Alter the relationships of power
+Relationships
+   Meet people where they're at
+   Keep a sustaining approach
+   Let it go! Look at the long term
+     - Windows vs Linux
+     - I.E. vs Firefox
+     - Cathedral and the Bazaar
+

@@ -65,6 +65,16 @@ module.exports = {
       test: /\.jpg$/,
       loader: "url-loader?mimetype=image/jpg",
       include: path.join(__dirname, "assets")
+    },
+    {
+      test: /\.wav$/,
+      loader: "url-loader?mimetype=audio/wav",
+      include: path.join(__dirname, "assets")
+    },
+    {
+      test: /\.mp3$/,
+      loader: "url-loader?mimetype=audio/mpeg",
+      include: path.join(__dirname, "assets")
     }]
   }
 };
