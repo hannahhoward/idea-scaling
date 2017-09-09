@@ -3,15 +3,7 @@ import React from "react";
 
 // Import Spectacle Core tags
 import {
-  BlockQuote,
-  Cite,
-  Deck,
-  Heading,
-  ListItem,
-  List,
-  Quote,
-  Slide,
-  Text
+  Deck
 } from "spectacle";
 
 import AboutMeSlide from "./slideTemplates/about-me-slide.jsx";
@@ -24,9 +16,6 @@ import ImageSlide from "./slideTemplates/image-slide.jsx";
 import MozillaReleaseSlide from "./slides/mozilla-release.jsx";
 
 //import { headerColor, textColor, bgColor } from "./slideTemplates/utilities.jsx";
-
-// Import image preloader util
-import preloader from "spectacle/lib/utils/preloader";
 
 // Import theme
 import createTheme from "spectacle/lib/themes/default";
@@ -45,8 +34,86 @@ const theme = createTheme({
   secondary: "Helvetica"
 });
 
-export default class Presentation extends React.Component {
+const notes = {
+  aboutMe:
+    (
+      <div>
+        <p>Hey everyone! My name's Hannah.</p>
+        <p>This is my contact info and the web address for this presentation will given be at the end.</p>
+        <p>I'm an aging Gen X developer who's probably been doing this a bit too long. I sometimes go by the handle techgirlwonder and this is my little personal logo</p>
+        <p>I work for Carbon Five! We're a product development agency that does boutique software development for all kinds of companys from startups to Fortune 500 enterprises. And we love Elixir!</p>
+      </div>
+    ),
+  salesPitch:
+    (
+      <div>
+        <p>This talk begins with a sales pitch about Erlang.</p>
+        <p>It is a sales pitch so bear with me if it's a bit glossy</p>
+        <p>How many of you know the relationship between Erlang and Elixir</p>
+        <p>Someone raise their hand and tell me the relationship</p>
+      </div>
+    ),
+  facebook:
+    (
+      <div>
+        <p>Facebook employs 500 developers</p>
+        <p>What are all these programmers doing?</p>
+        <p>Basically facebook is a simple rails app (or actually PHP for real) a dev team could prototype in two days scaled to a billion people</p>
+      </div>
+    ),
+  substantive:
+    (
+      <div>
+        <p>Sales often involves feelings of lack of authenticity</p>
+        <p>Even though pretty much everything I said in the pitch at the beginning is mostly true,
+          it wasn't very useful beyond making you excited and you were probably left questioning if it's real</p>
+      </div>
+    ),
+  crashesSuck:
+    (
+      <div>
+        <p>how much time do we spend time on the frankly impossible task of preventing our programs from ever crashing?</p>
+      </div>
+    ),
+  letItCrash:
+    (
+      <div>
+        <p>Erlang takes a radically different approach and says .... let it crash. But don't take the system down.
+          Instead of making a perfect program, let parts of the program fail and keep the system running.</p>
+      </div>
+    ),
+  relationships:
+    (
+      <div>
+        <p>An organizer's currency is the relationships they build and maintain</p>
+        <p>The first people you organize are the folks that are already in your network</p>
+        <p>So these are some key practices organizers use to maintain your relationships</p>
+      </div>
+    ),
+  meetPeopleWhereTheyAreAt:
+    (<div>
+      <p>Meeting people where they're at is a real relief.</p>
+      <p>Senior devs often look at what juniors are doing and get disappointed, cause the task feels so great.</p>
+      <p>Meeting people where they're at means you focus on how you can expand someone's mind, someone's consciousness, someone's skill right at this moment</p>
+    </div>),
+  keepASustainingApproach:
+    (<div>
+      <p>A community organizer knows what goes around comes around</p>
+      <p>So being disruptive doesn't always work</p>
+      <p>David Heinemeyer Hansen</p>
+        <ul>
+          <li>Abrasive disruption led to rails popularity</li>
+          <li>Let to lack of lasting popularity</li>
+        </ul>
+    </div>),
+  longTermApproach:
+      (<div>
+        <p>We don't win fast. We often lose.</p>
+        <p>Story of trans organizing at healthcare</p>
+      </div>)
+};
 
+export default class Presentation extends React.Component {
 
   render() {
 
@@ -58,18 +125,19 @@ export default class Presentation extends React.Component {
 
     return (
       <Deck transition={["zoom", "slide"]} transitionDuration={500} theme={theme}>
-        <AboutMeSlide notes="hello" />
-        <ImageSlide image="erlang-logo.png" title="Let's Talk About Erlang" />
+        <AboutMeSlide notes={notes.aboutMe} />
+        <ImageSlide image="poohbear.jpg" title="Obligatory Personal Anecdote" text="My dog is cute."/>
+        <ImageSlide image="erlang-logo.png" title="Let's Talk About Erlang" notes={notes.salesPitch} />
         <SimpleSlide statement="Erlang is incredible" />
         <SimpleSlide statement="Concurrency sucks" />
         <SimpleSlide fit={false} statement="Erlang Is Based On The Actor Model"/>
         <SimpleSlide fit={false} statement="Erlang Offers Preemptive Scheduling"/>
         <ConceptSlide fit={false} description="Best Language For Concurrency Ever" concept="(Possibly Alternative) Erlang Fact" />
         <SimpleSlide statement="Scaling sucks" />
-        <ConceptSlide description="500+" concept="Facebook Programmer Count" />
+        <ConceptSlide description="500+" concept="Facebook Programmer Count" notes={notes.facebook}/>
         <SimpleSlide fit={false} statement="Erlang makes scaling practically effortless" />
-        <SimpleSlide statement="Preventing crashes sucks" />
-        <ConceptSlide description="Let It Crash" concept="Erlang Motto" />
+        <SimpleSlide statement="Preventing crashes sucks" notes={notes.crashesSuck} />
+        <ConceptSlide description="Let It Crash" concept="Erlang Motto" notes={notes.letItCrash} />
         <SimpleSlide statement="Results?" />
         <ConceptSlide description="99.9999999%" concept="Ericcson PBX Uptime" />
         <ImageSlide image="whats-app.jpg" title="" />
@@ -100,7 +168,7 @@ export default class Presentation extends React.Component {
         <SimpleSlide inverted statement="Idea scaling = Selling ?" />
         <SimpleSlide inverted statement="What does selling make you think of?" />
         <ImageSlide inverted image="don-draper.jpg" title="This guy..."/>
-        <ImageSlide inverted image="stock-people.jpg" title="This super substantive group..."/>
+        <ImageSlide inverted image="stock-people.jpg" title="This super substantive group..." notes={notes.substantive}/>
         <ImageSlide inverted image="coffee-closer.jpg" title="I am not here to teach you how to sell."/>
         <SimpleSlide inverted statement="Community Organizing" />
         <ImageSlide inverted image="barack-obama.jpg" title="Our president" text="(former)" />
@@ -117,7 +185,7 @@ export default class Presentation extends React.Component {
         <ConceptSlide inverted description="Win Concrete Improvements" concept="Rule #1"/>
         <SimpleSlide inverted statement="Productive Out Of The Box" />
         <SimpleSlide inverted statement="Faster out of the box" />
-        <ConceptSlide inverted description="Give People A Sense Of The Own Power" concept="Rule #2"/>
+        <ConceptSlide inverted description="Give People A Sense Of Their Own Power" concept="Rule #2"/>
         <SimpleSlide inverted statement="Clear The Erlang Cruft" />
         <SimpleSlide inverted statement="Package Manager" />
         <SimpleSlide inverted statement="Use Erlang to Deliver!" />
@@ -125,15 +193,17 @@ export default class Presentation extends React.Component {
         <SimpleSlide inverted statement="Ideas Live In Communities" />
         <SimpleSlide inverted statement="ElixirBridge" />
         <SimpleSlide inverted statement="Open Source" />
-        <SimpleSlide inverted statement="Relationships" />
-        <ConceptSlide inverted description="Meet people where they're at" concept="Practice #1" />
-        <ConceptSlide inverted description="Keep a sustaining approach" concept="Practice #2" />
-        <ConceptSlide inverted description="Look At The Long Term!" concept="Practice #3" />
+        <SimpleSlide inverted statement="Relationships" notes={notes.relationships} />
+        <SimpleSlide inverted statement="#LifeAdvice"/>
+        <ConceptSlide inverted description="Meet people where they're at" notes={notes.meetPeopleWhereTheyAreAt} concept="Practice #1" />
+        <ConceptSlide inverted description="Keep a sustaining approach" notes={notes.keepASustainingApproach} concept="Practice #2" />
+        <ConceptSlide inverted description="Look At The Long Term!" notes={notes.longTermApproach} concept="Practice #3" />
         <SimpleSlide statement="Once upon a time... (the 1990's)" />
         <ImageSlide image="windows.jpg" title="Bad old days" />
         <SimpleSlide statement="Then there was linux..." />
         <SimpleSlide statement="Then there was open source..." />
         <MozillaReleaseSlide />
+        <SimpleSlide statement="http://idea-scaling.techgirlwonder.com" />
       </Deck>
     );
   }

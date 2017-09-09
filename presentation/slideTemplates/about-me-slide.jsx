@@ -15,6 +15,9 @@ import FullScreen from "./full-screen.jsx";
 
 const AboutMeSlide = () => {
   const tgwLogo = require("../../assets/techgirlwonder-01.png").replace("/", "");
+  const c5Logo = require("../../assets/carbonfive.png");
+  const listStyle = { listStyleType: "none" };
+  const imageStyle = { margin: "0em", marginLeft: "0.5em" };
   return (
       <FullScreen>
         <div style={{ flexGrow: 0, height: "100%" }}>
@@ -27,9 +30,14 @@ const AboutMeSlide = () => {
             @techgirlwonder #AboutMe
           </Heading>
           <List>
-            <Appear><ListItem>Hannah Howard</ListItem></Appear>
-            <Appear><ListItem>hannah@carbonfive.com</ListItem></Appear>
-            <Appear><ListItem>Twitter above!</ListItem></Appear>
+            <ListItem>Hannah Howard</ListItem>
+            <ListItem>hannah@carbonfive.com</ListItem>
+            <ListItem>Twitter above!</ListItem>
+            <Appear>
+              <ListItem style={listStyle}>
+                <Image style={imageStyle} src={c5Logo} width="408px"/>
+              </ListItem>
+            </Appear>
           </List>
         </div>
       </FullScreen>
